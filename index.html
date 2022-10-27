@@ -198,7 +198,12 @@
           </h4>
 
           <div class="pub-abstract" itemprop="text">
-            In  these study, we need to define the decision variables(e.g. what time we choose to notify users), the availability of users and stratification variables(e.g. indicator function here),treatment(e.g. certain user recieve treatment or not), longitudinal data, randomization formula, etc.
+            <strong>Availability:</strong>The indicator $I_t = 1$ means that the participant is available at decision time $t$ and $I_t = 0$ otherwise. </br>
+            <strong>Stratification variable:</strong>The stratification varibale is $X_t$. In our Sense2Stop, there are two srata;$X_t=1$ indicates $t$ is within an episode which, at the peak of this episode,the participant was classified as stressed and $X_t=0$ otherwise. $X_t$ is only obseved in real time if $t$ is the minute following the peak and this is also called availablility of participant above.
+            <strong>Treatment:</strong> $A_t$ is a binary random variable means that if $A_t = 1$, denote the participant is chosen to receive a reminder to parctice stress reduction exercises at available time and $A_t = 0$ otherwise.
+            <strong>Proximal response:</strong>Usually treatment are designed to have a proximal, near-term effect on a response variable. The proximal response, denoted here by $Y_{t,\Delta}$, is the function of the participant's data within a sunsequent window of length $\Delta$. Here in the paper, the proximal outcome is the fraction of time classified as stressed over the subsequent $\Delta = 60$ minutes.
+            As the previous setting of this paper, the real time stress calssification is made at the peak of an episode and after the classification is made, the prior minutes in the same episode recieve the same classfication. Here this setting give us the relationship between $X_t$ and $Y_{t,\Delta}$:
+            $$Y_{t,\Delta} = \Delta^{-1}\sum_{s=1}^{\Delta}X_{t+s}=1$$                              
           </div>
 
           
@@ -265,7 +270,8 @@
                   The The following three assumptions are used to express the causal treatment effect, $β(t; x)$, in terms of the observable data.
                 </div> 
                 <div class="latex">  
-                  $\textbf{Assumption 4.1}$ We assume consistency, positivity, and sequential ignorability: <strong>Consistensy</strong>: For each $t\leq T + \Delta,\{ X_t(\overline{A}_{t-1}),I_t(\overline{A}_{t-1})\} = \{X_t.I_t\}.$ That is, the observed values equal the corresponding potential outcomes.
+                  $\textbf{Assumption 4.1}$ We assume consistency, positivity, and sequential ignorability:
+                <strong>Consistensy</strong>: For each $t\leq T + \Delta,\{ X_t(\overline{A}_{t-1}),I_t(\overline{A}_{t-1})\} = \{X_t.I_t\}.$ That is, the observed values equal the corresponding potential outcomes.
                   
                 </div>
                 <div class="latex">  
