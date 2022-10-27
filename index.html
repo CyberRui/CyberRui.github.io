@@ -20,6 +20,20 @@
   <title>Jiarui's Homepage</title>
   
   <link rel="icon" href="/img/icon.png">
+  <script src='http://cdn.mathjax.org/mathjax/latest/MathJax.js' type='text/javascript'>    
+    MathJax.Hub.Config({
+        HTML: ["input/TeX","output/HTML-CSS"],
+        TeX: { extensions: ["AMSmath.js","AMSsymbols.js"], 
+               equationNumbers: { autoNumber: "AMS" } },
+        extensions: ["tex2jax.js"],
+        jax: ["input/TeX","output/HTML-CSS"],
+        tex2jax: { inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+                   displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+                   processEscapes: true },
+        "HTML-CSS": { availableFonts: ["TeX"],
+                      linebreaks: { automatic: true } }
+    });
+</script>
 </head>
 
 <body>
@@ -169,7 +183,7 @@
         <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
 
 
-          <div style="float: right;" class="col-md-12">
+          <div style="float: left;" class="col-md-12">
             <h4 class="project-title" itemprop="name">
               <b>What the questions do we want to answer?</b>
             </h4>
@@ -188,7 +202,7 @@
       <div class="col-xs-12 col-md-11">
         <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
         
-        <div style="float: right;" class="col-md-12">
+        <div style="float: left;" class="col-md-12">
           <h4 class="project-title" itemprop="name">
             <b>What (observed or unobserved) random variables are needed to fully model the problem?</b>
           </h4>
@@ -209,7 +223,7 @@
         <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
           
     
-          <div style="float: right;" class="col-md-12">
+          <div style="float: left;" class="col-md-12">
             <h4 class="project-title" itemprop="name">
               <b>What is the causal effect that we wish to study?</b>
             </h4>
@@ -230,7 +244,7 @@
         <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
           
     
-          <div style="float: right;" class="col-md-12">
+          <div style="float: left;" class="col-md-12">
             <h4 class="project-title" itemprop="name">
               <b>What are your working hypotheses about the relationship between variables?</b>
             </h4>
@@ -240,6 +254,87 @@
             </div>
 
             
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-xs-12 col-md-1 section-heading"></div>
+      <div class="col-xs-12 col-md-11">
+        <div class="pub-list-item" itemscope itemtype="http://schema.org/CreativeWork">
+
+
+          <div style="float: left;" class="col-md-12">
+            <h4 class="project-title" itemprop="name">
+              <b>What assumptions are you making for identification, and why?</b>
+            </h4>
+            <div class="pub-abstract" itemprop="text">
+                
+                <div class="latex">  
+                  The The following three assumptions are used to express the causal treatment effect, $β(t; x)$, in terms of the observable data.
+                </div> 
+                <div class="latex">  
+                  $\textbf{Assumption 4.1}$ We assume consistency, positivity, and sequential ignorability: <strong>Consistensy</strong>: For each $t\leq T + \Delta,\{ X_t(\overline{A}_{t-1}),I_t(\overline{A}_{t-1})\} = \{X_t.I_t\}.$ That is, the observed values equal the corresponding potential outcomes.
+                  
+                </div>
+                <div class="latex">  
+                  <strong>Positivity</strong>: if the joint density $\{ H_t = h, A_t = a\}$ is greater than zero, then $pr(A_t = a_t|H_t = h_t)>0.$
+                </div>
+                <div class="latex">
+                  <strong>Sequential ignorability</strong>: for each $t\leq T$, the potential outcomes, $\{X_2(a_1),I_2(a_1),...,X_{T+\Delta}(\overline{a}_{T+\Delta - 1})\}_{\overline{a}_{T+\Delta - 1}}\in \{ 0,1\}^{T+\Delta-1},$ are independent of $A_t$ conditional on the history $H_t$.  
+                </div>
+            <div class="pub-abstract" itemprop="text">  
+            <Strong>Reason:</Strong> Sequential ignorability and, assuming all of the randomization probabilities are bounded away from 0 and 1, positivity, are guaranteed for an sMRT by design. Consistensy is a necessary assumption for linking the potential outcomes as defined here to the data. When an individual's outcomes may be influenced by the treatments provided to other individuals, consistency may not hold. In such instances, a group-based conceptualization of potential outcomes is used. In particualr, if the mobile intervention includes treatments that aim to produce social ties between participants, then consistency as stated above will not hold. For simplicity, we do not consider such mobile intervention here.
+            </div>
+            Under assumption above, the conditional treatment effect satisfies
+            $$\begin{aligned}
+            & \beta(t ; x)=\mathbb{E}_{\mathbf{p}}\left[\mathbb{E}_{\mathbf{p}}\left[\prod_{j=t+1}^{t+\Delta-1} \frac{1_{A_{j}}=0}{p_{j}\left(A_{j} \mid H_{j}\right)} Y_{t, \Delta} \mid A_{t}=1, H_{t}\right] \mid X_{t}=x, I_{t}=1\right]- \\
+            & \mathbb{E}_{\mathbf{p}}\left[\mathbb{E}_{\mathbf{p}}\left[\prod_{j=t+1}^{t+\Delta-1} \frac{1_{A_{j}=0}}{p_{j}\left(A_{j} \mid H_{j}\right)} Y_{t, \Delta} \mid A_{t}=0, H_{t} \| X_{t}=x, I_{t}=1\right]\right.
+            \end{aligned}$$
+            for all $x\in {0,...,k}$ where each expectation is with respect to the distribution of the data collected using the randomization probabilities specified in the design of the sMRT(indicated by the subscript <strong>p</strong> on the expectation).
+            Note that the above products, e.g.$\prod_{j=t+1}^{t+\Delta-1} \frac{1_{A_{j}}=0}{p_{j}\left(A_{j} \mid H_{j}\right)}$, are set to 1 if $\Delta = 1.$ Proof of this lemma I will show as follwing:
+            <div class="pub-abstract" itemprop="text">
+              <strong>Proof:</strong>For $a \in\{0,1\}$, we consider the
+              \begin{aligned}
+              & \mathbb{E}\left[\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\left(\bar{a}_{j-1}\right)\right)\right) Y_{t, \Delta}\left(\bar{a}_{t-1}, a, \overline{0}\right) I_{t}\left(\bar{a}_{t-1}\right)\right] \\
+              =& \mathbb{E}\left[\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\left(\bar{a}_{j-1}\right)\right)\right) I_{t}\left(\bar{a}_{t-1}\right) \mathbb{E}\left[Y_{t, \Delta}\left(\bar{a}_{t-1}, a, 0\right) \mid H_{t}\left(\bar{a}_{t-1}\right)\right]\right]
+              \end{aligned}
+              Since the history $H_{t}$ includes availability at time $t$. By consistency, $H_{t}\left(\bar{A}_{t-1}\right)=$ $H_{t}$ and $I_{t}\left(\bar{a}_{t-1}\right)=I_{t}$ so the above is equal to
+              $$\mathbb{E}\left[\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\right)\right) I_{t} \mathbb{E}\left[Y_{t, \Delta}\left(\bar{a}_{t-1}, a, \overline{0}\right) \mid H_{t}\right]\right]$$
+              Sequential ignorability implies that
+              $$\begin{aligned}
+              & \mathbb{E}\left[Y_{t, \Delta}\left(\bar{a}_{t-1}, a, \overline{0}\right) \mid H_{t}\right] \\
+              =& \mathbb{E}\left[Y_{t, \Delta}\left(\bar{a}_{t-1}, a, \overline{0}\right) \mid H_{t}, A_{t}=a\right]
+              \end{aligned}$$
+              Sequential ignorability also implies that $\mathbb{E}\left[Y_{t, \Delta}\left(\bar{a}_{t-1}, a, 0\right) \mid H_{t+k}\right] \mathbb{E}\left[1_{A_{l+k}=0} \mid H_{t+k}\right]$ is equal to $\mathbb{E}\left[Y_{t, \Delta}\left(\bar{a}_{t-1}, a, \overline{0}\right) 1_{A_{t+k}=0} \mid H_{t+k}\right]$. We apply this to show
+              \begin{aligned}
+              & \mathbb{E}\left[Y_{t, \Delta}\left(\bar{a}_{t-1}, a, \overline{0}\right) \mid H_{t}, A_{t}=a\right] \\
+              =& \mathbb{E}\left[\mathbb{E}\left[Y_{t, \Delta}\left(\bar{a}_{t-1}, a, \overline{0}\right) \mid H_{t+1}\right] \mid H_{t}, A_{t}=a\right] \\
+              =& \mathbb{E}\left[\mathbb{E}\left[Y_{t, \Delta}\left(\bar{t}_{t-1}, a, \overline{0}\right) \mid H_{t+1}\right] \frac{\mathbb{E}\left[1_{A_{t+1}=0} \mid H_{t+1}\right]}{p_{t+1}\left(0 \mid H_{t+1}\right)} \mid H_{t}, A_{t}=a\right] \\
+              =& \mathbb{E}\left[\mathbb{E}\left[Y_{t, \Delta}\left(\bar{a}_{t-1}, a, \overline{0}\right) \frac{1_{A_{t+1}=0}}{p_{t+1}\left(0 \mid H_{t+1}\right)} \mid H_{t+1}\right] \mid H_{t}, A_{t}=a\right]
+              \end{aligned}
+              Iteratively applying this argument, we end up with the following expectation
+              \begin{aligned}
+              & \mathbb{E}\left[\frac{1}{p_{t+1}\left(0 \mid H_{t+1}\right)} \mathbb{E}\left[\cdots \mathbb{E}\left[Y_{t, \Delta}\left(a_{t-1}, a, 0\right) \frac{1}{p_{t+\Delta-1}\left(0 \mid H_{t+\Delta-1}=0\right.}|| H_{t+\Delta-1}\right] \mid H_{t+1}\right] \mid H_{t}, A_{t}=a\right] \\
+              & =\mathbb{E}\left[\prod_{j=t+1}^{t+\Delta-1} \frac{1_{A_{j}=0}}{p_{j}\left(0 \mid H_{j}\right)} Y_{t, \Delta}\left(\tilde{a}_{t-1}\right) \mid H_{t}, A_{t}=a\right]
+              \end{aligned}
+              Plug into the second expression of expectation above,
+              $$\mathbb{E}\left[\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\right)\right) I_{t} \mathbb{E}\left[\prod_{j=t+1}^{t+\Delta-1} \frac{1_{A_{j}=0}}{p_{j}\left(0 \mid H_{j}\right)} Y_{t, \Delta}\left(\bar{a}_{t-1}\right) \mid H_{t}, A_{t}=a\right]\right] \text {. }$$
+              Summing over all potential outcomes and normalizing yields
+              $$\begin{aligned}
+              & \mathbb{E}\left[\sum_{\bar{a}_{t-1}} \frac{\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\right)\right) I_{t}}{\mathbb{E}\left[\sum_{\bar{t}_{t-1}}\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\right)\right) I_{t}\right]} \mathbb{E}\left[\prod_{j=t+1}^{t+\Delta-1} \frac{1_{A_{j}=0}}{p_{j}\left(0 \mid H_{j}\right)} Y_{t, \Delta}\left(\bar{a}_{t-1}\right) \mid H_{t}, A_{t}=a\right]\right] \\
+              =& \mathbb{E}\left[\sum_{\bar{a}_{t-1}} \frac{\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\right)\right) I_{t}}{\mathbb{E}\left[\sum_{\bar{a}_{t-1}}\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\right)\right) I_{t}\right]} \mathbb{E}\left[\prod_{j=t+1}^{t+\Delta-1} \frac{1_{A_{j}=0}}{p_{j}\left(0 \mid H_{j}\right)} Y_{t, \Delta}\left(\bar{a}_{t-1}\right) \mid H_{t}, A_{t}=a\right] \mid I_{t}=\right.\\
+              =& \mathbb{E}\left[\mathbb{E}\left[\prod_{j=t+1}^{t+\Delta-1} \frac{1_{A_{j}=0}}{p_{j}\left(0 \mid H_{j}\right)} Y_{t, \Delta} \mid H_{t}, A_{t}=a\right] \mid I_{t}=1\right] .
+              \end{aligned}
+              $$
+              In the final equation, the outer expectation is with respect to the history $H_{t}$ conditional on $I_{t}=1$. That is, over both past actions $A_{s}$ and past observations $O_{s}$ for $ s < t $
+              \begin{aligned}
+& \frac{\mathbb{E}\left[\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\left(\bar{a}_{j-1}\right)\right)\right) Y_{t, \Delta}\left(\bar{a}_{t-1}, a, 0\right) I_{t}\left(\bar{a}_{t-1}\right)\right]}{\mathbb{E}\left[\left(\prod_{j=1}^{t-1} p_{j}\left(a_{j} \mid H_{j}\left(\bar{a}_{j-1}\right)\right)\right) I_{t}\left(\bar{a}_{t-1}\right)\right]} \\
+=& \mathbb{E}\left[\mathbb{E}\left[\prod_{j=t+1}^{t+\Delta-1} \frac{1_{A_{j}=0}}{p_{j}\left(0 \mid H_{j}\right)} Y_{t, \Delta} \mid H_{t}, A_{t}=a\right] \mid I_{t}=1\right]
+\end{aligned}
+            </div>
+            </div>
           </div>
         </div>
       </div>
