@@ -332,6 +332,76 @@
             </div>
             </div>
           </div>
+          <div style="float: left;" class="col-md-12">
+            <h4 class="project-title" itemprop="name">
+              <b>What algorithms are you using for estimation?</b>
+            </h4>
+              1.This part is the development of a sample size formula that will sufficient power to detect alternatives to the null hypothesis of no proximal treatment effcet.The sample size will be denoted by N. Our test statistic will feneralize the test statistics developed by Boruvka to accomodate stratification as well as the fact the response $Y_{t,\Delta}$ covers a time intercal during which sunsequent treatment may be delivered ,$(\Delta = 1)$.Moreover, sample size calculation are informed by novel conceptual insight that these estimators can be interpreted as $L_2$ projections.<br>
+
+              2.The techniccal perspective is very similar to the quadratic form test statistics based on witghted regression used in Generalized Estimating Equations method.<br>
+              3.Sandwich estimator of the vairance.<br>
+              4.Binary search algorithm
+              5.low dimensional Markovian generative model.
+            <div class="pub-abstract" itemprop="text">
+              
+            </div>
+
+            
+          </div>
+          <div style="float: left;" class="col-md-12">
+            <h4 class="project-title" itemprop="name">
+              <b>What steps are needed for estimation?</b>
+              
+            </h4>
+              Firstly,we use $L_2$ projections and provide the test statistics to get the sample size formula to get sufficient power to detect alternatives to the null hypothesis.
+              Secondly, we need to determin the sample size N, the step is following:<br>
+              1.desired type 1 and type 2 error rates.<br>
+              2.targeted alternatice $\beta(t;x),$<br>
+              3.seleted probabilities ${p_t(1|x)}$,<br>
+              4.seleted "control variables" $g_t(H_t)$,<br>
+              5.the randomization formula used to determine $p_t(1|h)$ given a history h, and<br>
+              6.a generative model for $H_{t=1,...,T}$<br>
+            <div class="pub-abstract" itemprop="text">
+              
+            </div>
+
+            
+          </div>
+          <div style="float: left;" class="col-md-12">
+            <h4 class="project-title" itemprop="name">
+              <b>How exactly does data factor into estimation?</b>
+              
+            </h4>
+            In the following, we take the general three-step procedure and walk through how to adapt it to the specifics of the Sense2Stop study and form the sample size calculator. Recall the last step involves a variety of simulations to assess robustness to the assumption underlying the generative model;<br>
+            As noted previously, Sense2Stop is a 10 day study; 
+            the first day is the “quit day”, the day the participant quits smoking.
+            Recall that participants wear the AutoSense sensor suite [Ertin et al., 2011] which provides a variety of physiological data streams. During the conduct of the study, the stratification variable, Xt is constructed online. Xt = 1 if at minute t there is “sufficient evidence” that the participant is in a stress episode; otherwise Xt = 0. That is, until there is sufficient evidence whether that the participant is in a stress episode, Xt remains unknown. Further information on these episodes follows. First, every minute, a support vector machine (SVM) algorithm is applied to a number of ECG and respiration features constructed from the prior one minute stream of sensor data.
+            The output of the SVM is then transformed to obtain a stress “likelihood” in (0, 1); see Hovsepian et al. 
+            [2015] for details. This output (in (0, 1)) across the minute intervals is further smoothed to obtain a smoother stress likelihood time series. Next, a Moving Average Convergence Divergence approach is used to identify minutes at which the trend in the stress likelihood is going up and when it is going down; see Sarker et al. 
+            [2016] for details. The beginning of an episode is marked by the start of a positive-trend interval in the stress “likelihood.” Recall the peak of an episode is the end of a positive-trend interval followed by the start of a negative-trend interval. If the area under the curve from the beginning of the episode to the minute that the peak of the episode is detected exceeds a threshold, 
+            then at this time the individual is classified as stressed for all minutes t in the episode (i.e., Xt = 1). At all other times, the participant belongs to the not classified as stressed strata (i.e., Xt = 0).  The threshold is based on prior data from lab experiments. and was evaluated on independent test datasets (from both lab and field) in terms of the F1 score (a combination of sensitivity and specificity ) for use in detecting physiological stress.<br>
+
+
+            <div class="pub-abstract" itemprop="text">
+              
+            </div>
+
+            
+          </div>
+          <div style="float: left;" class="col-md-12">
+            <h4 class="project-title" itemprop="name">
+              <b>What can ou say about the results/performance of the algorithm?</b>
+              
+            </h4>
+            the relatively simple generative model allowed us to use only a very few statistics from the Minnesota dataset. There are two concerns: (1) whether or not the participants in the Minnesota study are representative of the future participants in Sense2Stop, and (2) whether or not the generative model built upon a few sample moments adequately captures the variation in the unknown longitudinal distribution (𝑋𝑡,𝑈𝑡,𝐼𝑡)𝑇𝑡=1 under no treatment. If (1) does not hold, then the sample moments may be biased (scenario A). If (1) holds and (2) does not, it may be that prior scientific knowledge can suggest potential deviations that are difficult to estimate given the small size of prior data (scenario B). If (1) holds and (2) does not, alternatively, it may be that we can account for additional variation via fitting more complex models to the Minnesota dataset (scenario C). Any of these scenarios may problematic if it results in sample sizes for which the power to detect the desired effect is below the specified power. Therefore, we construct a feasible set of alternative generative models to which the sample size calculator should be robust. Note, this is not an exhaustive list, but highlights three important scenarios we expect to occur in practice.
+            
+
+            <div class="pub-abstract" itemprop="text">
+              
+            </div>
+
+            
+          </div>
         </div>
       </div>
     </div>
