@@ -405,7 +405,7 @@
           </div>
           <div style="float: left;" class="col-md-12">
             <h4 class="project-title" itemprop="name">
-              <b> Sensitivity analysis</b>
+              <strong> Sensitivity analysis</strong>
               
             </h4>
 
@@ -418,6 +418,15 @@
             choices for the no-treatment transition matrix.
             <img src="https://CyberRui.github.io/img/table3.png" alt="table3">
             
+            <strong>Deviations from a Markov generative model</strong>:Here we test ro- bustness of the sample size calculator to the over-fit semi-Markovian devi- ations presented in the main text. To test the calculator, we generate data using the no-treatment semi-Markov model.The data is simulated so that the treatment effect used by the calculator is correct.<br>
+            Table 4 presents achieved power under these alternative generative mod- els. We see that the achieved power is well above the pre-specified 80% threshold in each case. Therefore the sample size calculator is robust to
+            such complex deviations from the Markovian generative model.
+            <img src="https://CyberRui.github.io/img/table4.png" alt="table4">
+            <strong>Adjustments to the simulation-based calculator.</strong>:We have now evaluated the simulation calculator. Here we make adjustments to the sim- ulation calculator to ensure robustness. First, we note that the simulation calculator is robust to the potential semi-Markovian deviation. We make the decision that we are not concerned with lack of robustness to deviations from a time-inhomogenous transition matrix. Instead we focus on making the simulation calculator robust to misspecification of transition matrix.<br>
+            The above analysis suggests for the smoking cessation example that the sample size should be set to ensure at least $80 \%$ power over a set of feasible choices for the transition matrix $P^{(0)}$. We fix $\left(\epsilon, \epsilon^{\prime}\right)=(0.01,2)$ to be our tolerance to misspecification of the inputs. For each set of inputs $(W, Z) \in \Omega_{0.01,2}$, the sample size calculator will compute a sample size, and the maximum of this set of computed sample sizes will be chosen to ensure tolerance to misspecification of the transition matrix. Table 5 presents the sample size under this procedure as well as the avhieved minimum power over the set $\Omega_{\varepsilon, \epsilon^{\prime}}$
+            <img src="https://CyberRui.github.io/img/table5.png" alt="table5">
+            We have illustrated the three-step procedure to forming a sample size calculator for the smoking cessation study example. Suppose the scientist specifies an average treatment effect $\tilde{\beta}$ equal to $0.025$. Based on the above discussion a sample size $N$ of 113 would be recommended to ensure power above the pre-specified $80 \%$ threshold across a set of feasible deviations from the assumed generative model.
+
             <div class="pub-abstract" itemprop="text">
             
               
